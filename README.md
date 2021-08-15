@@ -61,3 +61,18 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## Instalation
+Init proyect laravel
+
+Con composer necesitamos agregar la dependencia laravel/ui que permite usar Vue o React. La instalamos en modo desarrollo con:
+>composer require laravel/ui --dev
+
+Después de eso vamos a generar la estructura básica del front-end con:
+
+>php artisan ui vue
+
+El package.json se habrá modificado así que hay que refrescar las dependencias usando NPM con:
+
+>npm install
