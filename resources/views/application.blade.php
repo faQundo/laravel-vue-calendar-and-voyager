@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>PCKA challenge</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+    <link href="{{ asset(mix('css/app.css')) }}" rel="stylesheet">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     {{-- viutify --}}
@@ -412,7 +413,7 @@
 
 
     {{-- <script src="{{asset("/js/app.js")}}"></script> --}}
-    <script src="{{ asset(mix('js/app.js')) }}?v2"></script>
+    <script src="{{ asset(mix('js/app.js')) }}"></script>
 </body>
 
 </html>
