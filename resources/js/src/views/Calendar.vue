@@ -18,6 +18,7 @@
           <v-spacer></v-spacer>
           <v-menu bottom right>
             <template v-slot:activator="{ on, attrs }">
+              <NewEventModal />
               <v-btn outlined color="grey darken-2" v-bind="attrs" v-on="on">
                 <span>{{ typeToLabel[type] }}</span>
                 <v-icon right> mdi-menu-down </v-icon>
@@ -59,6 +60,7 @@
           :activator="selectedElement"
           offset-x
         >
+          <!-- Event card -->
           <v-card color="grey lighten-4" min-width="350px" flat>
             <v-toolbar :color="selectedEvent.color" dark>
               <v-btn icon>
@@ -66,9 +68,6 @@
               </v-btn>
               <v-toolbar-title v-html="selectedEvent.name"></v-toolbar-title>
               <v-spacer></v-spacer>
-              <v-btn icon>
-                <v-icon>mdi-heart</v-icon>
-              </v-btn>
               <v-btn icon>
                 <v-icon>mdi-dots-vertical</v-icon>
               </v-btn>
@@ -82,23 +81,31 @@
               </v-btn>
             </v-card-actions>
           </v-card>
+          <!-- End envent Card -->
         </v-menu>
       </v-sheet>
     </v-col>
+
   </v-row>
 </template>
 
 <script>
+import axios from "../axios";
+import NewEventModal from "../components/NewEventModal.vue";
+
 export default {
+  components: {
+    NewEventModal,
+  },
   created() {
     const thisIns = this;
 
     axios
-      .get("/api/user")
+      .get("/api/public/users")
       .then((response) => {
-        thisIns.users = response.data.data;
+        thisIns.users = response.data;
         /* thisIns.totalItems = response.data.meta.total; */
-        alert(JSON.stringify(thisIns.users))
+        /* alert(JSON.stringify(response.data)); */
       })
       .catch((error) => {
         console.log("ERROR,", error);
@@ -126,6 +133,7 @@ export default {
       "orange",
       "grey darken-1",
     ],
+    users: [],
     names: [
       "Meeting",
       "Holiday",
@@ -136,6 +144,10 @@ export default {
       "Conference",
       "Party",
     ],
+    date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
+      .toISOString()
+      .substr(0, 10),
+
   }),
   mounted() {
     this.$refs.calendar.checkChange();
@@ -147,6 +159,9 @@ export default {
     },
     getEventColor(event) {
       return event.color;
+    },
+    newEvent() {
+
     },
     setToday() {
       this.focus = "";

@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group([
+    'prefix' => 'public'
+], function ($router) {
+    Route::get('users', [App\Http\Controllers\UserController::class , 'index']);
+});
