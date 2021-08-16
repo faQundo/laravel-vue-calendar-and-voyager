@@ -4,6 +4,11 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import router from './router/index'
 
+// axios
+import axios from './axios.js'
+Vue.prototype.$http = axios
+
+
 new Vue({
      router,
     /*store,
