@@ -297,67 +297,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  created: function created() {
+    var thisIns = this;
+    axios.get("/api/user").then(function (response) {
+      thisIns.users = response.data.data;
+      /* thisIns.totalItems = response.data.meta.total; */
+
+      alert(JSON.stringify(thisIns.users));
+    })["catch"](function (error) {
+      console.log("ERROR,", error);
+    });
+  },
   data: function data() {
     return {
-      focus: '',
-      type: 'month',
+      focus: "",
+      type: "month",
       typeToLabel: {
-        month: 'Month',
-        week: 'Week',
-        day: 'Day',
-        '4day': '4 Days'
+        month: "Month",
+        week: "Week",
+        day: "Day",
+        "4day": "4 Days"
       },
       selectedEvent: {},
       selectedElement: null,
       selectedOpen: false,
       events: [],
-      colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1'],
-      names: ['Meeting', 'Holiday', 'PTO', 'Travel', 'Event', 'Birthday', 'Conference', 'Party']
+      colors: ["blue", "indigo", "deep-purple", "cyan", "green", "orange", "grey darken-1"],
+      names: ["Meeting", "Holiday", "PTO", "Travel", "Event", "Birthday", "Conference", "Party"]
     };
   },
   mounted: function mounted() {
@@ -367,13 +334,13 @@ __webpack_require__.r(__webpack_exports__);
     viewDay: function viewDay(_ref) {
       var date = _ref.date;
       this.focus = date;
-      this.type = 'day';
+      this.type = "day";
     },
     getEventColor: function getEventColor(event) {
       return event.color;
     },
     setToday: function setToday() {
-      this.focus = '';
+      this.focus = "";
     },
     prev: function prev() {
       this.$refs.calendar.prev();
@@ -1844,7 +1811,7 @@ var render = function() {
                     },
                     [
                       _c("v-icon", { attrs: { small: "" } }, [
-                        _vm._v("\n            mdi-chevron-left\n          ")
+                        _vm._v(" mdi-chevron-left ")
                       ])
                     ],
                     1
@@ -1863,7 +1830,7 @@ var render = function() {
                     },
                     [
                       _c("v-icon", { attrs: { small: "" } }, [
-                        _vm._v("\n            mdi-chevron-right\n          ")
+                        _vm._v(" mdi-chevron-right ")
                       ])
                     ],
                     1
@@ -1914,9 +1881,7 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("v-icon", { attrs: { right: "" } }, [
-                                    _vm._v(
-                                      "\n                mdi-menu-down\n              "
-                                    )
+                                    _vm._v(" mdi-menu-down ")
                                   ])
                                 ],
                                 1
