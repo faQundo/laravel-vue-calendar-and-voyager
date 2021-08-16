@@ -5,7 +5,7 @@ import vuetify from './plugins/vuetify'
 import router from './router/index'
 
 // axios
-import axios from './axios.js'
+import axios from 'axios'
 Vue.prototype.$http = axios
 
 
