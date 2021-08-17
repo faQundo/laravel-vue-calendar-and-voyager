@@ -21,5 +21,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group([
     'prefix' => 'public'
 ], function ($router) {
-    Route::get('users', [App\Http\Controllers\UserController::class , 'index']);
+    Route::apiResources([
+        'users' => \App\Http\Controllers\UserController::class,
+        'payments' => \App\Http\Controllers\PaymentController::class,
+        'diaries' => \App\Http\Controllers\DiaryController::class,
+    ]);
 });

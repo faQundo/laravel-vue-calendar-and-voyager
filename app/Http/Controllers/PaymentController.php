@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Payment;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -13,7 +14,8 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        $query = Payment::query();
+        return response()->json($query->get());
     }
 
     /**

@@ -14,7 +14,11 @@
         <v-card-text>
           <v-container>
             <v-row>
-              <v-col cols="12" sm="12">
+
+                <v-col cols="12" sm="6">
+                  <v-text-field label="Title"></v-text-field>
+                </v-col>
+                <v-col cols="12" sm="6">
                 <v-menu
                   ref="menu"
                   v-model="menu"
@@ -45,14 +49,31 @@
                   </v-date-picker>
                 </v-menu>
               </v-col>
-              <v-col cols="12" sm="12">
+              <v-col cols="12" sm="6">
                 <v-select
-                  v-model="schedulesSelect"
-                  :items="schedules"
+                  v-model="startTimeSelect"
+                  :items="startTime"
                   attach
                   chips
-                  label="Schedules available"
-                  multiple
+                  label="Start time available"
+                ></v-select>
+              </v-col>
+              <v-col cols="12" sm="6">
+               <v-select
+                  v-model="durationSelect"
+                  :items="durationList"
+                  attach
+                  chips
+                  label="Duration"
+                ></v-select>
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-select
+                  v-model="statusSelect"
+                  :items="statusList"
+                  attach
+                  chips
+                  label="Status"
                 ></v-select>
               </v-col>
             </v-row>
@@ -64,9 +85,7 @@
           <v-btn color="blue darken-1" text @click="dialog = false">
             Close
           </v-btn>
-          <v-btn color="blue darken-1" text @click="saveEvent" >
-            Save
-          </v-btn>
+          <v-btn color="blue darken-1" text @click="saveEvent"> Save </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -76,8 +95,7 @@
 <script>
 export default {
   created() {
-      const thisIns = this;
-
+    const thisIns = this;
   },
   data: () => ({
     dialog: false,
@@ -85,17 +103,20 @@ export default {
       .toISOString()
       .substr(0, 10),
     menu: false,
-    schedules: ["foo", "bar", "fizz", "buzz"],
-    schedulesSelect: [],
+    startTime: ["foo", "bar", "fizz", "buzz"],
+    startTimeSelect: [],
+    duration: ["foo", "bar", "fizz", "buzz"],
+    durationSelect: '',
+    statusList: ["foo", "bar", "fizz", "buzz"],
+    statusSelect: '',
   }),
   /* props: {
     date: Date,
   }, */
   methods: {
-   saveEvent() {
-       this.dialog = false;
-
-   },
+    saveEvent() {
+      this.dialog = false;
     },
+  },
 };
 </script>

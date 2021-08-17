@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Diary;
 use Illuminate\Http\Request;
 
 class DiaryController extends Controller
@@ -13,7 +14,8 @@ class DiaryController extends Controller
      */
     public function index()
     {
-        //
+        $query = Diary::query();
+        return response()->json($query->get()); //
     }
 
     /**
