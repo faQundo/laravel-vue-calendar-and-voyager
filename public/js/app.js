@@ -2261,6 +2261,14 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (error) {
       console.log("ERROR,", error);
     });
+    _axios__WEBPACK_IMPORTED_MODULE_0__.default.get("/api/public/users").then(function (response) {
+      thisIns.users = response.data;
+      /* thisIns.totalItems = response.data.meta.total; */
+
+      /* alert(JSON.stringify(response.data)); */
+    })["catch"](function (error) {
+      console.log("ERROR,", error);
+    });
   },
   data: function data() {
     return {

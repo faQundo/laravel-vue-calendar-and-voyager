@@ -85,7 +85,6 @@
         </v-menu>
       </v-sheet>
     </v-col>
-
   </v-row>
 </template>
 
@@ -99,6 +98,17 @@ export default {
   },
   created() {
     const thisIns = this;
+
+    axios
+      .get("/api/public/users")
+      .then((response) => {
+        thisIns.users = response.data;
+        /* thisIns.totalItems = response.data.meta.total; */
+        /* alert(JSON.stringify(response.data)); */
+      })
+      .catch((error) => {
+        console.log("ERROR,", error);
+      });
 
     axios
       .get("/api/public/users")
@@ -147,7 +157,6 @@ export default {
     date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
       .toISOString()
       .substr(0, 10),
-
   }),
   mounted() {
     this.$refs.calendar.checkChange();
@@ -160,9 +169,7 @@ export default {
     getEventColor(event) {
       return event.color;
     },
-    newEvent() {
-
-    },
+    newEvent() {},
     setToday() {
       this.focus = "";
     },
